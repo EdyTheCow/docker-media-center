@@ -1,3 +1,8 @@
+<p align="center">
+  <img width="500" src="https://raw.githubusercontent.com/BeefBytes/Assets/master/Other/container_illustration/v2/dmc.png">
+</p>
+
+
 # 📚 About
 Docker Media Center is a fully automated media set-up using Jellyfin and a bunch of other services to achieve full automation. All of the services listed below are running behind Traefik reverse proxy with proper certificates and basic auth. Most other similar set-up were either lacking some sort of reverse proxy and were rather exposing ports or were poorly documented. This guide aims for the quickest way to set-up a secure and production ready media center set-up.
 
