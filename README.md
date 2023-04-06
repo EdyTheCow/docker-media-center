@@ -23,7 +23,7 @@ This guide assumes you have a basic knowledge of linux and Docker / Docker Compo
 First we want configure enviroment variables and setup domain records before installing anything. 
 
 <b>Enviroment variables</b><br />
-Navigate to `dmc/compose/.env/` and edit these variables
+Navigate to `dmc/compose/.env/` and edit these variables.
 
 | Variable | Default | Description |
 |---|---|---|
@@ -37,9 +37,10 @@ Navigate to `dmc/compose/.env/` and edit these variables
 
 
 <b>Domain DNS records</b><br />
-Setting up subdomains for every service, you are free to use whatever subdomain you want as long as it matches the subdomain specified in `dmc/compose/.env/` file. The example below shows the default values. 
+Setting up subdomains for every service, you are free to use whatever subdomain you want as long as it matches the subdomain specified in `dmc/compose/.env/` file. The example below shows the default values.
 
-If you're using Cloudflare, make sure to enable the proxying by enabling the cloud icon. For full end to end encyption, you can also enable "Full" under SSL/TLS section in the Cloudflare panel.
+If you're using Cloudflare, make sure to enable the proxying by enabling the cloud icon. For full end-to-end encryption, you can also enable "Full" under the SSL/TLS section in the Cloudflare panel.
+
 
 | Sub domain | Record | Target |
 |---|---|---|
@@ -65,7 +66,7 @@ sudo chmod 600 acme.json
 ```
 
 <b>Basic auth</b><br />
-Navigate to `_base/data/traefik/.htpasswd` and paste your generated user/pass in MD5 format. This will be your basic auth user/pass for most services we're going to setup.
+Navigate to `_base/data/traefik/.htpasswd` and paste your generated user/pass in MD5 format. This will be your basic auth user/pass for most services we're going to set up.
 
 <b>Start docker compose</b><br />
 Inside of `_base/compose` run
@@ -74,10 +75,31 @@ docker-compose up -d
  ```
 
 ## Jellyfin
+<b>Start jellyfin</b><br />
+Inside of `dmc/compose` run
+ ```
+docker-compose up -d jellyfin
+ ```
+<b>Configure jellyfin</b><br />
+Navigate to `jellyfin.domain.com` in your browser and follow the instructions. When selecting library folder follow these paths:
+
+| Library | Path |
+|---|---|
+| Movies | /data/media/local/movies |
+| TV Shows | /data/media/local/tvshows |
+
+Jellyfin only has one volume pointing at `/data/media` this allows us to add whatever media type we want without having to define extra volumes in docker. The reason why it's under `local` directory is in case we wanted to mount google drive or similar in the future, we could add media under `gdrive` instead of `local` for example.
 
 ## Transmission
+Inside of `dmc/compose` run
+ ```
+docker-compose up -d transmission
+ ```
+<b>Configure transmission</b><br />
+Navigate to `transmission.domain.com` in your browser, you should be asked to login using the credentials for basic auth you set-up earlier. Make sure everything works, other than that there's no further configuration.
 
 ## Radarr
+
 
 ## Sonarr
 
@@ -86,5 +108,8 @@ docker-compose up -d
 ## Jellyseer
 
 
-# 🐛 Known issues
-- None
+# 📋 TODO
+- Add an option for rclone for ability to mount gdrive, etc.
+- Add Plex as an option
+- Add VPN option for Transmission torrent client
+- Explore the hype surrounding https://real-debrid.com
