@@ -11,8 +11,8 @@ Docker Media Center is a fully automated media set-up using Jellyfin and a bunch
 - Transmission
 - Radarr
 - Sonarr
-- Powlarr
-- Jellyseer
+- Prowlarr
+- Jellyseerr
 
 # 🧰 Getting Started
 This guide assumes you have a basic knowledge of linux and Docker / Docker Compose. 
@@ -55,7 +55,7 @@ If you're using Cloudflare, make sure to enable the proxying by enabling the clo
 | jellyseer.domain.com | CNAME | dmc.domain.com |
 | radarr.domain.com | CNAME | dmc.domain.com |
 | sonarr.domain.com | CNAME | dmc.domain.com |
-| powlarr.domain.com | CNAME | dmc.domain.com |
+| prowlarr.domain.com | CNAME | dmc.domain.com |
 
 ## Setting up Traefik
 <b>Clone repository</b><br />
@@ -80,12 +80,11 @@ docker-compose up -d
  ```
 
 ## Jellyfin
-<b>Start jellyfin</b><br />
 Inside of `dmc/compose` run
  ```
 docker-compose up -d jellyfin
  ```
-<b>Configure jellyfin</b><br />
+<b>Configuration</b><br />
 Navigate to `jellyfin.domain.com` in your browser and follow the instructions. When selecting library folder follow these paths:
 
 | Library | Path |
@@ -96,21 +95,55 @@ Navigate to `jellyfin.domain.com` in your browser and follow the instructions. W
 Jellyfin only has one volume pointing at `/data/media` this allows us to add whatever media type we want without having to define extra volumes in docker. The reason why it's under `local` directory is in case we wanted to mount google drive or similar in the future, we could add media under `gdrive` instead of `local` for example.
 
 ## Transmission
-Inside of `dmc/compose` run
+Start service
  ```
 docker-compose up -d transmission
  ```
-<b>Configure transmission</b><br />
+<b>Configuration</b><br />
 Navigate to `transmission.domain.com` in your browser, you should be asked to login using the credentials for basic auth you set-up earlier. Make sure everything works, other than that there's no further configuration.
 
-## Radarr
+## Prowlarr
 
+## Radarr
+Start service
+ ```
+docker-compose up -d radarr
+ ```
+
+ <b>Configuration</b><br />
+In the panel, navigate to `Media Management` section and add root folder by simply selecting `/movies` directory.
 
 ## Sonarr
+Start service
+ ```
+docker-compose up -d sonarr
+ ```
 
-## Powlarr
+ <b>Configuration</b><br />
+In the panel, navigate to `Media Management` section and add root folder by simply selecting `/tv` directory.
 
-## Jellyseer
+
+## Jellyseerr
+Start service
+ ```
+docker-compose up -d jellyseerr
+ ```
+
+ <b>Configuration</b><br />
+ Select option to use `Jellyfin account` and proceed by providing url and account details for your jellyfin installation. Scan and enable libraries.
+
+ <b>Adding radarr / sonarr</b><br />
+Most importantly, do not use the actual url or IP of radarr / sonarr. Simply use `radarr` or `sonarr` for the hostname. This will resolve the local IP of the container rather than the public one. Since we're running everything on the same server, it's more secure and convenient to connect these services locally. Make sure to uncheck `Use SSL` option too for the local connection to work.
+
+Below are the important settings you should edit, the instructions for sonarr are exactly the same. Just make sure to replace `radarr` with `sonarr` and you should be good to go.
+
+| Setting | Value |
+|---|---|
+| Default Server | Checked |
+| Server Name | Radarr (can be something else too) |
+| Hostname or IP Address | radarr |
+| Use SSL | Unchecked |
+| API Key | Can be found under General section in radarr panel |
 
 
 # 📋 TODO
