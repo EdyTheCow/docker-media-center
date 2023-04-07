@@ -1,0 +1,152 @@
+version: "3.7"
+
+networks:
+  global:
+    external: true
+  local:
+    external: false
+
+services:
+
+  jellyfin:
+    image: lscr.io/linuxserver/jellyfin:latest
+    restart: unless-stopped
+    #security_opt: # Required for Docker versions below 20.10.10, update Docker for long term solution. Source: https://docs.linuxserver.io/faq#jammy
+    #  - seccomp=unconfined
+    networks:
+      - global
+      - local
+    environment:
+      - PUID=${ENV_PUID}
+      - PGID=${ENV_PGID}
+      - TZ=${TIMEZONE}
+    volumes:
+      - ${SERVICES_DIR}/jellyfin:/config
+      - ${DATA_DIR}/media:/data/media
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.dmc-jellyfin.rule=Host(`${SUB_DOMAIN_JELLYFIN}.${DOMAIN}`)"
+      - "traefik.http.routers.dmc-jellyfin.tls=true"
+      - "traefik.http.services.dmc-jellyfin.loadbalancer.server.port=8096"
+      - "traefik.http.routers.dmc-jellyfin.tls.certresolver=letsencrypt"
+      - "traefik.docker.network=global"
+
+  transmission:
+    image: lscr.io/linuxserver/transmission:latest
+    restart: unless-stopped
+    networks:
+      - global
+      - local
+    environment:
+      - PUID=${ENV_PUID}
+      - PGID=${ENV_PGID}
+      - TZ={TIMEZONE}
+    volumes:
+      - ${SERVICES_DIR}/transmission:/config
+      - ${DATA_DIR}/downloads:/data/downloads
+    ports:
+      - 51413:51413 # Torrent port TCP
+      - 51413:51413/udp # Torrent port UDP
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.dmc-transmission.rule=Host(`${SUB_DOMAIN_TRANSMISSION}.${DOMAIN}`)"
+      - "traefik.http.routers.dmc-transmission.tls=true"
+      - "traefik.http.services.dmc-transmission.loadbalancer.server.port=9091"
+      - "traefik.http.routers.dmc-transmission.tls.certresolver=letsencrypt"
+      - "traefik.docker.network=global"
+      # Basic auth
+      - "traefik.http.middlewares.dmc-auth.basicauth.usersfile=/.htpasswd"
+      - "traefik.http.routers.dmc-transmission.middlewares=dmc-auth"
+
+  radarr:
+    image: lscr.io/linuxserver/radarr:latest
+    restart: unless-stopped
+    networks:
+      - global
+      - local
+    environment:
+      - PUID=${ENV_PUID}
+      - PGID=${ENV_PGID}
+      - TZ={TIMEZONE}
+    volumes:
+      - ${SERVICES_DIR}/radarr:/config
+      - ${DATA_DIR}:/data
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.dmc-radarr.rule=Host(`${SUB_DOMAIN_RADARR}.${DOMAIN}`)"
+      - "traefik.http.routers.dmc-radarr.tls=true"
+      - "traefik.http.services.dmc-radarr.loadbalancer.server.port=7878"
+      - "traefik.http.routers.dmc-radarr.tls.certresolver=letsencrypt"
+      - "traefik.docker.network=global"
+      # Basic auth
+      - "traefik.http.middlewares.dmc-auth.basicauth.usersfile=/.htpasswd"
+      - "traefik.http.routers.dmc-radarr.middlewares=dmc-auth"
+
+  sonarr:
+    image: lscr.io/linuxserver/sonarr:latest
+    restart: unless-stopped
+    #security_opt: # Required for Docker versions below 20.10.10, update Docker for long term solution. Source: https://docs.linuxserver.io/faq#jammy
+    #  - seccomp=unconfined
+    networks:
+      - global
+      - local
+    environment:
+      - PUID=${ENV_PUID}
+      - PGID=${ENV_PGID}
+      - TZ={TIMEZONE}
+    volumes:
+      - ${SERVICES_DIR}/sonarr:/config
+      - ${DATA_DIR}:/data
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.dmc-sonarr.rule=Host(`${SUB_DOMAIN_SONARR}.${DOMAIN}`)"
+      - "traefik.http.routers.dmc-sonarr.tls=true"
+      - "traefik.http.services.dmc-sonarr.loadbalancer.server.port=8989"
+      - "traefik.http.routers.dmc-sonarr.tls.certresolver=letsencrypt"
+      - "traefik.docker.network=global"
+      # Basic auth
+      - "traefik.http.middlewares.dmc-auth.basicauth.usersfile=/.htpasswd"
+      - "traefik.http.routers.dmc-sonarr.middlewares=dmc-auth"
+
+  prowlarr:
+    image: lscr.io/linuxserver/prowlarr:latest
+    restart: unless-stopped
+    networks:
+      - global
+      - local
+    environment:
+      - PUID=${ENV_PUID}
+      - PGID=${ENV_PGID}
+      - TZ={TIMEZONE}
+    volumes:
+      - ${SERVICES_DIR}/prowlarr:/config
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.dmc-prowlarr.rule=Host(`${SUB_DOMAIN_PROWLARR}.${DOMAIN}`)"
+      - "traefik.http.routers.dmc-prowlarr.tls=true"
+      - "traefik.http.services.dmc-prowlarr.loadbalancer.server.port=9696"
+      - "traefik.http.routers.dmc-prowlarr.tls.certresolver=letsencrypt"
+      - "traefik.docker.network=global"
+      # Basic auth
+      - "traefik.http.middlewares.dmc-auth.basicauth.usersfile=/.htpasswd"
+      - "traefik.http.routers.dmc-prowlarr.middlewares=dmc-auth"
+
+  jellyseerr:
+    image: fallenbagel/jellyseerr:latest
+    restart: unless-stopped
+    networks:
+      - global
+      - local
+    environment:
+      - LOG_LEVEL=debug
+      - TZ={TIMEZONE}
+    volumes:
+      - ${SERVICES_DIR}/jellyseerr:/app/config
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.dmc-jellyseerr.rule=Host(`${SUB_DOMAIN_JELLYSEERR}.${DOMAIN}`)"
+      - "traefik.http.routers.dmc-jellyseerr.tls=true"
+      - "traefik.http.services.dmc-jellyseerr.loadbalancer.server.port=5055"
+      - "traefik.http.routers.dmc-jellyseerr.tls.certresolver=letsencrypt"
+      - "traefik.docker.network=global"
+

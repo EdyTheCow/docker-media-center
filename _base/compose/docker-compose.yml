@@ -1,0 +1,25 @@
+version: '3.7'
+
+networks:
+  global:
+    external: true
+
+services:
+
+  traefik:
+    image: traefik:v2.9
+    env_file:
+      - .env
+    networks:
+      - global
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ${DATA_DIR}/traefik/traefik.toml:/etc/traefik/traefik.toml
+      - ${DATA_DIR}/traefik/acme.json:/acme.json
+      - ${DATA_DIR}/traefik/.htpasswd:/.htpasswd
+    labels:
+      - "traefik.http.middlewares.dmc-auth.basicauth.usersfile=/.htpasswd"
