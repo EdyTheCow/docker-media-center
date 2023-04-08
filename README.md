@@ -29,6 +29,11 @@ This guide assumes you have a basic knowledge of linux and Docker / Docker Compo
 ## Preparations
 First we want configure enviroment variables and setup domain records before installing anything. 
 
+<b>Clone repository</b><br />
+```
+git clone https://github.com/EdyTheCow/docker-media-center.git
+```
+
 <b>Enviroment variables</b><br />
 Navigate to `dmc/compose/.env/` and edit these variables.
 
@@ -61,11 +66,6 @@ If you're using Cloudflare, make sure to enable the proxying by enabling the clo
 | prowlarr.domain.com | CNAME | dmc.domain.com |
 
 ## Traefik
-<b>Clone repository</b><br />
-```
-git clone https://github.com/EdyTheCow/docker-media-center.git
-```
-
 <b>Set correct acme.json permissions</b><br />
 
 Navigate to `_base/data/traefik/` and run
