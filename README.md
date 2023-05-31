@@ -60,7 +60,7 @@ If you're using Cloudflare, make sure to enable the proxying by enabling the clo
 | dmc.domain.com | A | Your server IP |
 | jellyfin.domain.com | CNAME | dmc.domain.com |
 | transmission.domain.com | CNAME | dmc.domain.com |
-| jellyseer.domain.com | CNAME | dmc.domain.com |
+| jellyseerr.domain.com | CNAME | dmc.domain.com |
 | radarr.domain.com | CNAME | dmc.domain.com |
 | sonarr.domain.com | CNAME | dmc.domain.com |
 | prowlarr.domain.com | CNAME | dmc.domain.com |
