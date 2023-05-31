@@ -15,6 +15,7 @@ Furthermore, the guide is set up with volume paths in a way to allow hardlinks o
 - Sonarr
 - Prowlarr
 - Jellyseerr
+- Wizarr
 
 # 🧰 Getting Started
 This guide assumes you have a basic knowledge of linux and Docker / Docker Compose.
@@ -64,6 +65,7 @@ If you're using Cloudflare, make sure to enable the proxying by enabling the clo
 | radarr.domain.com | CNAME | dmc.domain.com |
 | sonarr.domain.com | CNAME | dmc.domain.com |
 | prowlarr.domain.com | CNAME | dmc.domain.com |
+| wizarr.domain.com | CNAME | dmc.domain.com |
 
 ## Traefik
 <b>Set correct acme.json permissions</b><br />
@@ -183,6 +185,21 @@ Below are the important settings you should edit, the instructions for sonarr ar
 | Hostname or IP Address | radarr |
 | Use SSL | Unchecked |
 | API Key | Can be found under General section in radarr / sonarr panel |
+
+## Wizarr
+Inside of `dmc/compose` run
+ ```
+docker-compose up -d wizarr
+ ```
+
+ <b>Configuration</b><br />
+ Navigate to `wizarr.domain.com` in your browser, select and follow the setup. 
+ | Setting | Value |
+|---|---|
+| Server URL | https://jellyfin.domain.com |
+| Server Token / API Key | In Jellyfin admin panel: `Dashboard -> API Keys` |
+| Request instance | https://jellyseerr.domain.com |
+
 
 
 # 📋 TODO
