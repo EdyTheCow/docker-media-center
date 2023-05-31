@@ -150,3 +150,21 @@ services:
       - "traefik.http.routers.dmc-jellyseerr.tls.certresolver=letsencrypt"
       - "traefik.docker.network=global"
 
+  wizarr:
+    image: ghcr.io/wizarrrr/wizarr
+    restart: unless-stopped
+    networks:
+      - global
+      - local
+    volumes:
+      - ${SERVICES_DIR}/wizarr:/data/database
+    environment:
+      - APP_URL=https://${SUB_DOMAIN_WIZARR}.${DOMAIN}
+      - TZ={TIMEZONE}
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.dmc-wizarr.rule=Host(`${SUB_DOMAIN_WIZARR}.${DOMAIN}`)"
+      - "traefik.http.routers.dmc-wizarr.tls=true"
+      - "traefik.http.services.dmc-wizarr.loadbalancer.server.port=5690"
+      - "traefik.http.routers.dmc-wizarr.tls.certresolver=letsencrypt"
+      - "traefik.docker.network=global"
