@@ -193,7 +193,7 @@ docker-compose up -d wizarr
  ```
 
  <b>Configuration</b><br />
- Navigate to `wizarr.domain.com` in your browser, select and follow the setup. 
+ Navigate to `wizarr.domain.com` in your browser and follow the setup. 
  | Setting | Value |
 |---|---|
 | Server URL | https://jellyfin.domain.com |
