@@ -160,7 +160,7 @@ services:
       - ${SERVICES_DIR}/wizarr:/data/database
     environment:
       - APP_URL=https://${SUB_DOMAIN_WIZARR}.${DOMAIN}
-      - TZ={TIMEZONE}
+      - TZ=${TIMEZONE}
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.dmc-wizarr.rule=Host(`${SUB_DOMAIN_WIZARR}.${DOMAIN}`)"
