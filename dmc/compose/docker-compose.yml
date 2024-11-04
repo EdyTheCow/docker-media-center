@@ -43,7 +43,7 @@ services:
       - TZ={TIMEZONE}
     volumes:
       - ${SERVICES_DIR}/transmission:/config
-      - ${DATA_DIR}/downloads:/data/downloads
+      - ${DATA_DIR}/downloads:/downloads
     ports:
       - 51413:51413 # Torrent port TCP
       - 51413:51413/udp # Torrent port UDP
