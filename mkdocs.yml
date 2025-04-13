@@ -1,0 +1,45 @@
+site_name: Docker Media Center
+site_url: https://edythecow.github.io/docker-media-center
+repo_url: https://github.com/EdyTheCow/docker-media-center
+repo_name: EdyTheCow/docker-media-center
+edit_uri: edit/main/docs/
+
+theme:
+  name: material
+  palette:
+    scheme: slate
+    primary: black
+    accent: indigo
+  icon:
+    logo: material/movie-roll
+  favicon: assets/favicon.svg
+  features:
+    - content.action.edit
+    - content.action.view
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.footer
+    - navigation.sections
+    - search.suggest
+
+plugins:
+  - search
+  - git-committers:
+      repository: EdyTheCow/test-mkdocs
+      branch: main
+  - git-revision-date-localized:
+      enable_creation_date: true
+      type: timeago
+extra:
+  generator: false
+  
+nav:
+  - Getting started: 
+    - index.md
+    - installation.md
+    - Configurations:
+      - Riven: dmc-riven.md
+      - Arr Stack: dmc-arr.md
