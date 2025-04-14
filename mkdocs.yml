@@ -37,12 +37,12 @@ markdown_extensions:
 
 plugins:
   - search
-    #- git-committers:
-    #  repository: EdyTheCow/test-mkdocs
-    #  branch: main
-    #- git-revision-date-localized:
-    #  enable_creation_date: true
-    #  type: timeago
+  - git-committers:
+      repository: EdyTheCow/test-mkdocs
+      branch: main
+  - git-revision-date-localized:
+      enable_creation_date: true
+      type: timeago
 extra:
   generator: false
   
