@@ -86,9 +86,7 @@
     
       
 
-  
-
-<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+<header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href=".." title="Docker Media Center" class="md-header__button md-logo" aria-label="Docker Media Center" data-md-component="logo">
       
@@ -179,8 +177,14 @@
     
   </nav>
   
+</header>
     
+    <div class="md-container" data-md-component="container">
       
+      
+        
+          
+            
 <nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
   <div class="md-grid">
     <ul class="md-tabs__list">
@@ -230,13 +234,7 @@
     </ul>
   </div>
 </nav>
-    
-  
-</header>
-    
-    <div class="md-container" data-md-component="container">
-      
-      
+          
         
       
       <main class="md-main" data-md-component="main">
@@ -436,6 +434,19 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Riven
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -447,6 +458,223 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirements
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preparations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Preparations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Preparations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#clone-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      Clone repository
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#riven-environment-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Riven environment variables
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debrid-environment-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Debrid environment variables
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dns-records" class="md-nav__link">
+    <span class="md-ellipsis">
+      DNS records
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#traefik" class="md-nav__link">
+    <span class="md-ellipsis">
+      Traefik
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Traefik">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setting-correct-permissions-for-acmejson-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setting correct permissions for acme.json file
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#basic-auth" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic auth
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#start-traefik" class="md-nav__link">
+    <span class="md-ellipsis">
+      Start Traefik
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#zurg-rclone" class="md-nav__link">
+    <span class="md-ellipsis">
+      Zurg / Rclone
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Zurg / Rclone">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#start-zurg-and-rclone" class="md-nav__link">
+    <span class="md-ellipsis">
+      Start Zurg and Rclone
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jellyfin" class="md-nav__link">
+    <span class="md-ellipsis">
+      Jellyfin
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Jellyfin">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jellyseerr" class="md-nav__link">
+    <span class="md-ellipsis">
+      Jellyseerr
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Jellyseerr">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuration_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#riven_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Riven
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Riven">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuration_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -584,6 +812,212 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirements
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preparations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Preparations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Preparations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#clone-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      Clone repository
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#riven-environment-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Riven environment variables
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debrid-environment-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Debrid environment variables
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dns-records" class="md-nav__link">
+    <span class="md-ellipsis">
+      DNS records
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#traefik" class="md-nav__link">
+    <span class="md-ellipsis">
+      Traefik
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Traefik">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setting-correct-permissions-for-acmejson-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setting correct permissions for acme.json file
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#basic-auth" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic auth
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#start-traefik" class="md-nav__link">
+    <span class="md-ellipsis">
+      Start Traefik
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#zurg-rclone" class="md-nav__link">
+    <span class="md-ellipsis">
+      Zurg / Rclone
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Zurg / Rclone">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#start-zurg-and-rclone" class="md-nav__link">
+    <span class="md-ellipsis">
+      Start Zurg and Rclone
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jellyfin" class="md-nav__link">
+    <span class="md-ellipsis">
+      Jellyfin
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Jellyfin">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jellyseerr" class="md-nav__link">
+    <span class="md-ellipsis">
+      Jellyseerr
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Jellyseerr">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuration_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#riven_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Riven
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Riven">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuration_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -615,7 +1049,206 @@
 
 
 <h1 id="riven">Riven</h1>
-<p>WIP</p>
+<p>This guide assumes you have a basic knowledge of linux and Docker / Docker Compose.</p>
+<p><strong>Services:</strong> Jellyfin, Jellyseerr, Riven, Zurg, Rclone</p>
+<h2 id="requirements">Requirements</h2>
+<ul>
+<li>Domain</li>
+<li>Docker / Docker Compose</li>
+<li>Real-debrid subscription</li>
+</ul>
+<h2 id="preparations">Preparations</h2>
+<p>Configure environment  variables and setup domain records before installing anything.</p>
+<h3 id="clone-repository">Clone repository</h3>
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/EdyTheCow/docker-media-center.git
+</span></code></pre></div>
+<h3 id="riven-environment-variables"><strong>Riven</strong> environment variables</h3>
+<p>Navigate to <code>dmc-riven/riven/compose/.env</code></p>
+<p><strong>Required variables</strong></p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DOMAIN</td>
+<td>domain.com</td>
+<td>Domain used to access Jellyfin and other services</td>
+</tr>
+<tr>
+<td>DMC_RIVEN_DB_USER_PASS</td>
+<td>-</td>
+<td>Generate a password for Riven's database user</td>
+</tr>
+<tr>
+<td>DMC_RIVEN_REAL_DEBRID_API_KEY</td>
+<td>-</td>
+<td>Your real-debrid API key, can be found on their website</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Optional variables</strong>, these variables can be left as is or changed to your liking</p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>COMPOSE_PROJECT_NAME</td>
+<td>dmc-riven</td>
+<td>Prefix for all containers running in docker-compose file</td>
+</tr>
+<tr>
+<td>CONFIG_DIR</td>
+<td>../data</td>
+<td>Directory for storing configs of all services</td>
+</tr>
+<tr>
+<td>TIMEZONE</td>
+<td>Etc/UTC</td>
+<td>Timezone used by services, valid options can be found <a href="https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List">here </a></td>
+</tr>
+<tr>
+<td>PUID / PGID</td>
+<td>1000</td>
+<td>User and group ID, you can check yours with command: id</td>
+</tr>
+<tr>
+<td>SUB_DOMAIN_X</td>
+<td>-</td>
+<td>Subdomains for services, leave it or change it to your liking</td>
+</tr>
+</tbody>
+</table>
+<h3 id="debrid-environment-variables"><strong>Debrid</strong> environment variables</h3>
+<p>Navigate to <code>dmc-riven/debrid/compose/.env</code>, this file includes mostly the same variables which are all optional.</p>
+<p>For service Zurg we'll have to manually set real-debrid API key direcly in <code>config.yml</code>. Navigate to <code>dmc-riven/debrid/data/zurg/config.yml</code> and paste your real-debrid API key in <code>token:</code>
+<div class="language-yaml highlight"><span class="filename">snippet of config.yml</span><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nt">zurg</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nt">token</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">your-api-key-here</span>
+</span></code></pre></div></p>
+<h3 id="dns-records">DNS records</h3>
+<p>You are free to use whatever subdomain you want as long as it matches the subdomain specified in <code>dmc-riven/riven/compose/.env</code> file. The example below shows the default values.</p>
+<table>
+<thead>
+<tr>
+<th>Sub domain</th>
+<th style="text-align: center;">Record</th>
+<th>Target</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>dmc.domain.com</td>
+<td style="text-align: center;">A</td>
+<td>Your server's IP</td>
+</tr>
+<tr>
+<td>stream.domain.com</td>
+<td style="text-align: center;">CNAME</td>
+<td>dmc.domain.com</td>
+</tr>
+<tr>
+<td>add.domain.com</td>
+<td style="text-align: center;">CNAME</td>
+<td>dmc.domain.com</td>
+</tr>
+<tr>
+<td>riven.domain.com</td>
+<td style="text-align: center;">CNAME</td>
+<td>dmc.domain.com</td>
+</tr>
+</tbody>
+</table>
+<p>By setting DNS records this way, you can change server's IP by changing only one value instead of every subdomains target value.</p>
+<h2 id="traefik">Traefik</h2>
+<h3 id="setting-correct-permissions-for-acmejson-file">Setting correct permissions for <code>acme.json</code> file</h3>
+<p>Navigate to <code>_base/data/traefik/</code> and run
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sudo<span class="w"> </span>chmod<span class="w"> </span><span class="m">600</span><span class="w"> </span>acme.json
+</span></code></pre></div>
+This is where Traefik will store all of generated certificates for our services</p>
+<h3 id="basic-auth">Basic auth</h3>
+<p>Navigate to <code>_base/data/traefik/.htpasswd</code> and paste your generated user/pass in MD5 format. 
+This will be your basic auth user/pass for all services exposed to internet.
+You can generate user / pass pair by using command below. Replace <code>USER</code> and <code>PASSWORD</code> with your own.
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">printf</span><span class="w"> </span><span class="s2">&quot;USER:</span><span class="k">$(</span>openssl<span class="w"> </span>passwd<span class="w"> </span>-apr1<span class="w"> </span>PASSWORD<span class="k">)</span><span class="s2">\n&quot;</span>
+</span></code></pre></div>
+The command should output something like this
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>myUser:$apr1$qJicUGAO$ci9xH5pr1M02VZAFo.4mo.
+</span></code></pre></div>
+Copy paste the output to <code>_base/data/traefik/.htpasswd</code></p>
+<h3 id="start-traefik">Start Traefik</h3>
+<p>Navigate to <code>_base/compose</code> and run
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d
+</span></code></pre></div></p>
+<h2 id="zurg-rclone">Zurg / Rclone</h2>
+<p>First make sure you pasted the real-debrid API key in Zurg's config file at <code>dmc-riven/debrid/data/zurg/config.yml</code>
+By default real-debrid's drive will be mounted on your server at the path <code>/mnt/zurg</code>. 
+It's recommended to leave it as is, if you do want to change it. You'll have to modify the path in multiple files, you can find documentation on that in <a href="/docker-media-center/references">References </a> section. </p>
+<h3 id="start-zurg-and-rclone">Start Zurg and Rclone</h3>
+<p>It's important that Zurg and Rclone are started before other services. 
+Zurg / Rclone mounts a drive from real-debrid which is used by Jellyfin and Riven, if mount isn't found the rest of services will fail to function.</p>
+<p>Navigate to <code>dmc-riven/debrid/compose</code> and run
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d
+</span></code></pre></div></p>
+<h2 id="jellyfin">Jellyfin</h2>
+<p>Navigate to <code>dmc-riven/riven/compose</code> and run</p>
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d<span class="w"> </span>jellyfin
+</span></code></pre></div>
+<h3 id="configuration">Configuration</h3>
+<p>Navigate to <code>https://stream.domain.com</code> in your browser and follow the installation instructions. When selecting library folder follow these paths:</p>
+<table>
+<thead>
+<tr>
+<th>Library name</th>
+<th style="text-align: center;">Content type</th>
+<th>Path</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Movies</td>
+<td style="text-align: center;">Movies</td>
+<td>/mnt/media_symlinks/movies</td>
+</tr>
+<tr>
+<td>Shows</td>
+<td style="text-align: center;">Shows</td>
+<td>/mnt/media_symlinks/shows</td>
+</tr>
+<tr>
+<td>Anime Movies</td>
+<td style="text-align: center;">Movies</td>
+<td>/mnt/media_symlinks/anime_movies</td>
+</tr>
+<tr>
+<td>Anime Shows</td>
+<td style="text-align: center;">Shows</td>
+<td>/mnt/media_symlinks/anime_shows</td>
+</tr>
+</tbody>
+</table>
+<p>Library names can be whatever you want as long as paths are correct. <code>Anime Movies</code> and <code>Anime Shows</code> libraries are also optional.</p>
+<h2 id="jellyseerr">Jellyseerr</h2>
+<p>Navigate to <code>dmc-riven/debrid/compose</code> and run</p>
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d<span class="w"> </span>jellyseerr
+</span></code></pre></div>
+<h3 id="configuration_1">Configuration</h3>
+<p>Navigate to <code>https://add.domain.com</code> in your browser and follow the installation instructions.</p>
+<h2 id="riven_1">Riven</h2>
+<p>Navigate to <code>dmc-riven/debrid/compose</code> and run</p>
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d<span class="w"> </span>riven<span class="w"> </span>riven-db<span class="w"> </span>riven-frontend
+</span></code></pre></div>
+<p>Riven may take a couple of minutes to fully start. Navigate to <code>https://riven.domain.com</code> in your browser. 
+This time you will be prompted by basic auth by Traefik. Login with the credentials you chosen earlier.</p>
+<h3 id="configuration_2">Configuration</h3>
 
 
 
@@ -638,7 +1271,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="April 13, 2025 21:08:50"><span class="timeago" datetime="2025-04-13T21:08:50+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="April 13, 2025 21:08:50">2025-04-13</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="April 14, 2025 17:43:23"><span class="timeago" datetime="2025-04-14T17:43:23+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="April 14, 2025 17:43:23">2025-04-14</span>
   </span>
 
     
@@ -756,7 +1389,7 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "..", "features": ["content.action.edit", "content.action.view", "navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.footer", "navigation.sections", "search.suggest", "content.tooltips"], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "..", "features": ["content.action.edit", "content.action.view", "navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.tabs", "navigation.footer", "navigation.sections", "search.suggest", "content.tooltips", "content.code.copy"], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../assets/javascripts/bundle.c8b220af.min.js"></script>
