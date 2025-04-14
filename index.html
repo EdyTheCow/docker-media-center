@@ -6,6 +6,10 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
+        <meta name="description" content="Guides, documentation and examples for setting up a secure and fully automated media server using Traefik reverse proxy.">
+      
+      
+        <meta name="author" content="github.com/EdyTheCow">
       
       
         <link rel="canonical" href="https://edythecow.github.io/docker-media-center/">
@@ -507,7 +511,7 @@
   
   
     <li class="md-nav__item">
-      <a href="dmc-riven/" class="md-nav__link">
+      <a href="config/riven/" class="md-nav__link">
         
   
   
@@ -530,7 +534,7 @@
   
   
     <li class="md-nav__item">
-      <a href="dmc-arr/" class="md-nav__link">
+      <a href="config/arr-stack/" class="md-nav__link">
         
   
   
@@ -734,7 +738,7 @@
   
 
 
-<h1 id="about">About</h1>
+<h1 id="about">About<a class="headerlink" href="#about" title="Permanent link">&para;</a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Just wanna get started and don't care about any of this yapping? Head straight to <a href="/docker-media-center/installation">Installation</a> section!</p>
@@ -746,10 +750,10 @@ Sources for all of services and other documentation are linked in the guides.</p
 <p>Use these configurations and guides however you see fit, all credit goes to people who have developed all of these services making this possible. 
 Documentation and testing of all of this has taken me many hours. 
 If you found any of this useful, I would appreciate if you consider leaving a star <img alt="⭐" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/2b50.svg" title=":star:" /> :)</p>
-<h2 id="why-use-this-over-x">Why use this over X?</h2>
+<h2 id="why-use-this-over-x">Why use this over X?<a class="headerlink" href="#why-use-this-over-x" title="Permanent link">&para;</a></h2>
 <p>When I started looking at existing guides and provided docker compose files, I was surprised at the lack of reverse proxies and/or attempts of securing the services. Most of "ready to use" examples have open ports with no security in mind. Running services that way locally is probably fine, this guide is meant for anyone who wants to run them publicly in a secure way. </p>
 <p>None of services in any of configurations are exposed to internet directly. The few ones that are use Traefik as a reverse proxy to securely expose service's web UI with proper certificates. On top of that, services are put behind basic authentication enforced by Traefik. The rest of the services run and communicate locally on the server. Everything was pre-configured as much as possible for a quick and secure installation.</p>
-<h2 id="choosing-configuration">Choosing configuration</h2>
+<h2 id="choosing-configuration">Choosing configuration<a class="headerlink" href="#choosing-configuration" title="Permanent link">&para;</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Not familiar with services that are mentioned? Check out <a href="/docker-media-center/references">References </a> section.</p>
@@ -757,11 +761,11 @@ If you found any of this useful, I would appreciate if you consider leaving a st
 <p>The recommended and fastest way of setting up automated media server is to use Riven with a debrid service.
 While Riven is still quite new and is under active development, it replaces majority of Arr services compared to a more traditional setup.
 Meaning there is way less things to install and maintain. Here's a quick overview:</p>
-<h3 id="riven">Riven</h3>
+<h3 id="riven">Riven<a class="headerlink" href="#riven" title="Permanent link">&para;</a></h3>
 <p><strong>Services:</strong> Jellyfin, Jellyseerr, Riven, Zurg, Rclone</p>
 <p>Riven replaces sonarr, radarr, prowlarr (optional), download client (torrent / debrid client).
 However there's a small subscription cost for a debrid service which provides the unlimited shared storage.</p>
-<h3 id="arr-stack">Arr stack</h3>
+<h3 id="arr-stack">Arr stack<a class="headerlink" href="#arr-stack" title="Permanent link">&para;</a></h3>
 <p><strong>Services:</strong> Jellyfin, Jellyseerr, Sonarr, Radarr, Prowlarr, qBittorrent, Gluetun</p>
 <p>The traditional setup using arr services can provide more granular control. 
 Debrid can be also used with arr stack leveraging the unlimited storage.
