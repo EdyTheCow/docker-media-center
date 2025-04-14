@@ -1,16 +1,17 @@
 # Riven
 
-This guide assumes you have a basic knowledge of linux and Docker / Docker Compose.
+Guide for setting fully automated media server using Riven, a replacement for Arr services.
+Setup is secured using Traefik reverse proxy by generating certificates and providing basic auth for any exposed web UIs.
 
 **Services:** Jellyfin, Jellyseerr, Riven, Zurg, Rclone
 
 ## Requirements
 - Domain
 - Docker / Docker Compose
-- Real-debrid subscription
+- [Real-debrid.com](http://real-debrid.com/?id=13771120) subscription (referral link :heart:)
 
 ## Preparations
-Configure environment  variables and setup domain records before installing anything.
+Configuration of environment variables, domain records and basic auth before moving to installation and starting services.
 
 ### Clone repository
 ``` sh
@@ -18,7 +19,7 @@ git clone https://github.com/EdyTheCow/docker-media-center.git
 ``` 
 
 ### **Riven** environment variables
-Navigate to `dmc-riven/riven/compose/.env`
+Navigate to `dmc-riven/riven/compose/.env` and edit variables below.
 
 **Required variables**
 
@@ -28,7 +29,7 @@ Navigate to `dmc-riven/riven/compose/.env`
 | DMC_RIVEN_DB_USER_PASS        |      -     | Generate a password for Riven's database user           |
 | DMC_RIVEN_REAL_DEBRID_API_KEY |      -     | Your real-debrid API key, can be found on their website | 
 
-**Optional variables**, these variables can be left as is or changed to your liking
+**Optional variables**, these variables can be left as is or changed to your liking.
 
 | Variable             | Default   | Description                                                                                                                      |
 |----------------------|-----------|----------------------------------------------------------------------------------------------------------------------------------|
@@ -39,7 +40,7 @@ Navigate to `dmc-riven/riven/compose/.env`
 | SUB_DOMAIN_X         | -         | Subdomains for services, leave it or change it to your liking                                                                    |
 
 ### **Debrid** environment variables
-Navigate to `dmc-riven/debrid/compose/.env`, this file includes mostly the same variables which are all optional.
+Navigate to `dmc-riven/debrid/compose/.env`, this file includes mostly the same variables as above which are all optional.
 
 For service Zurg we'll have to manually set real-debrid API key direcly in `config.yml`. Navigate to `dmc-riven/debrid/data/zurg/config.yml` and paste your real-debrid API key in `token:`
 ``` yaml title="snippet of config.yml"
@@ -48,7 +49,7 @@ token: your-api-key-here
 ```
 
 ### DNS records
-You are free to use whatever subdomain you want as long as it matches the subdomain specified in `dmc-riven/riven/compose/.env` file. The example below shows the default values.
+You are free to use whatever subdomains you want as long as it matches the subdomain specified in `dmc-riven/riven/compose/.env` file. The example below shows the default values.
 
 | Sub domain        | Record | Target           |
 |-------------------|:------:|------------------|
@@ -57,21 +58,24 @@ You are free to use whatever subdomain you want as long as it matches the subdom
 | add.domain.com    |  CNAME | dmc.domain.com   |
 | riven.domain.com  |  CNAME | dmc.domain.com   |
 
-By setting DNS records this way, you can change server's IP by changing only one value instead of every subdomains target value.
+By setting DNS records this way, you can later on change server's IP by changing only one value instead of modifying every subdomains target value.
+
+### Create required directories
+
 
 ## Traefik
-### Setting correct permissions for `acme.json` file
+
+### Setting correct permissions for `acme.json`
 
 Navigate to `_base/data/traefik/` and run
 ``` sh
 sudo chmod 600 acme.json
 ```
-This is where Traefik will store all of generated certificates for our services
+This is where Traefik will store all of generated certificates for our services.
 
 ### Basic auth
 
-Navigate to `_base/data/traefik/.htpasswd` and paste your generated user/pass in MD5 format. 
-This will be your basic auth user/pass for all services exposed to internet.
+Navigate to `_base/data/traefik/.htpasswd` this is where we'll define basic auth user/pass for all services exposed to internet.
 You can generate user / pass pair by using command below. Replace `USER` and `PASSWORD` with your own.
 ``` sh
 printf "USER:$(openssl passwd -apr1 PASSWORD)\n"
@@ -80,7 +84,7 @@ The command should output something like this
 ```
 myUser:$apr1$qJicUGAO$ci9xH5pr1M02VZAFo.4mo.
 ```
-Copy paste the output to `_base/data/traefik/.htpasswd`
+Copy paste the output to `_base/data/traefik/.htpasswd` file. You can add multiple users by adding more values per new line.
 
 ### Start Traefik
 Navigate to `_base/compose` and run
@@ -90,8 +94,7 @@ docker compose up -d
 
 ## Zurg / Rclone
 First make sure you pasted the real-debrid API key in Zurg's config file at `dmc-riven/debrid/data/zurg/config.yml`
-By default real-debrid's drive will be mounted on your server at the path `/mnt/zurg`. 
-It's recommended to leave it as is, if you do want to change it. You'll have to modify the path in multiple files, you can find documentation on that in [References ](/docker-media-center/references ) section. 
+By default real-debrid's drive will be mounted on your server at the path `/mnt/zurg`. It's recommended to leave it as is.
 
 ### Start Zurg and Rclone
 It's important that Zurg and Rclone are started before other services. 
@@ -141,6 +144,6 @@ docker compose up -d riven riven-db riven-frontend
 ```
 
 Riven may take a couple of minutes to fully start. Navigate to `https://riven.domain.com` in your browser. 
-This time you will be prompted by basic auth by Traefik. Login with the credentials you chosen earlier.
+This time you will be prompted by basic auth by Traefik. Login with the credentials you chosen earlier in [basic auth](#basic-auth) section.
 
 ### Configuration

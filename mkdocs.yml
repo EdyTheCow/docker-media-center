@@ -1,5 +1,10 @@
 site_name: Docker Media Center
 site_url: https://edythecow.github.io/docker-media-center
+site_author: github.com/EdyTheCow
+site_description: >-
+  Guides, documentation and examples for setting up a secure and fully automated
+  media server using Traefik reverse proxy.
+
 repo_url: https://github.com/EdyTheCow/docker-media-center
 repo_name: EdyTheCow/docker-media-center
 edit_uri: edit/main/docs/
@@ -26,7 +31,7 @@ theme:
     - search.suggest
     - content.tooltips
     - content.code.copy
-
+    
 markdown_extensions:
   - attr_list
   - pymdownx.emoji:
@@ -42,6 +47,8 @@ markdown_extensions:
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - pymdownx.superfences
+  - toc:
+      permalink: true
 
 plugins:
   - search
@@ -53,13 +60,16 @@ plugins:
       type: timeago
 extra:
   generator: false
+  #analytics:
+  #  provider: google
+  #  property: !ENV GOOGLE_ANALYTICS_KEY
   
 nav:
   - Getting started: 
     - index.md
     - installation.md
     - Configurations:
-      - Riven: dmc-riven.md
-      - Arr Stack: dmc-arr.md
+      - Riven: config/riven.md
+      - Arr Stack: config/arr-stack.md
   - References: 
     - references/index.md
