@@ -20,7 +20,7 @@ theme:
     - navigation.instant.progress
     - navigation.tracking
     - navigation.tabs
-    #- navigation.tabs.sticky
+    - navigation.tabs.sticky
     - navigation.footer
     - navigation.sections
     - search.suggest
