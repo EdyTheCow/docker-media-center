@@ -24,15 +24,25 @@ theme:
     - navigation.footer
     - navigation.sections
     - search.suggest
+    - content.tooltips
+
+markdown_extensions:
+  - attr_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
 
 plugins:
   - search
-  - git-committers:
-      repository: EdyTheCow/test-mkdocs
-      branch: main
-  - git-revision-date-localized:
-      enable_creation_date: true
-      type: timeago
+    #- git-committers:
+    #  repository: EdyTheCow/test-mkdocs
+    #  branch: main
+    #- git-revision-date-localized:
+    #  enable_creation_date: true
+    #  type: timeago
 extra:
   generator: false
   
@@ -43,3 +53,5 @@ nav:
     - Configurations:
       - Riven: dmc-riven.md
       - Arr Stack: dmc-arr.md
+  - References: 
+    - references/index.md
