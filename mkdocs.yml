@@ -20,11 +20,12 @@ theme:
     - navigation.instant.progress
     - navigation.tracking
     - navigation.tabs
-    - navigation.tabs.sticky
+    #- navigation.tabs.sticky
     - navigation.footer
     - navigation.sections
     - search.suggest
     - content.tooltips
+    - content.code.copy
 
 markdown_extensions:
   - attr_list
@@ -33,6 +34,13 @@ markdown_extensions:
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - admonition
   - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
   - pymdownx.superfences
 
 plugins:
