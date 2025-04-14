@@ -2,18 +2,22 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://edythecow.github.io/docker-media-center/</loc>
-         <lastmod>2025-04-13</lastmod>
+         <lastmod>2025-04-14</lastmod>
     </url>
     <url>
          <loc>https://edythecow.github.io/docker-media-center/dmc-arr/</loc>
-         <lastmod>2025-04-13</lastmod>
+         <lastmod>2025-04-14</lastmod>
     </url>
     <url>
          <loc>https://edythecow.github.io/docker-media-center/dmc-riven/</loc>
-         <lastmod>2025-04-13</lastmod>
+         <lastmod>2025-04-14</lastmod>
     </url>
     <url>
          <loc>https://edythecow.github.io/docker-media-center/installation/</loc>
-         <lastmod>2025-04-13</lastmod>
+         <lastmod>2025-04-14</lastmod>
+    </url>
+    <url>
+         <loc>https://edythecow.github.io/docker-media-center/references/</loc>
+         <lastmod>2025-04-14</lastmod>
     </url>
 </urlset>
