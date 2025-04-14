@@ -38,7 +38,7 @@ markdown_extensions:
 plugins:
   - search
   - git-committers:
-      repository: EdyTheCow/test-mkdocs
+      repository: EdyTheCow/docker-media-center
       branch: main
   - git-revision-date-localized:
       enable_creation_date: true
