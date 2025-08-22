@@ -10,7 +10,7 @@ Furthermore, the guide is set up with volume paths in a way to allow hardlinks o
 
 ### Services
 - Jellyfin
-- Transmission
+- qBittorrent
 - Radarr
 - Sonarr
 - Prowlarr
@@ -59,7 +59,7 @@ If you're using Cloudflare, make sure to enable the proxying by enabling the clo
 |---|---|---|
 | dmc.domain.com | A | Your server IP |
 | jellyfin.domain.com | CNAME | dmc.domain.com |
-| transmission.domain.com | CNAME | dmc.domain.com |
+| qbittorrent.domain.com | CNAME | dmc.domain.com |
 | jellyseer.domain.com | CNAME | dmc.domain.com |
 | radarr.domain.com | CNAME | dmc.domain.com |
 | sonarr.domain.com | CNAME | dmc.domain.com |
@@ -97,13 +97,33 @@ Navigate to `jellyfin.domain.com` in your browser and follow the instructions. W
 
 Jellyfin only has one volume pointing at `/data/media` this allows us to add whatever media type we want without having to define extra volumes in docker for future media types. 
 
-## Transmission
+## qBittorrent
 Inside of `dmc/compose` run
  ```
-docker-compose up -d transmission
+docker-compose up -d qbittorrent
  ```
 <b>Configuration</b><br />
-Navigate to `transmission.domain.com` in your browser, you should be asked to login using the credentials for basic auth you set-up earlier. Under `Preferences -> Torrents` make sure your download paths look like this: `/data/downloads/complete` and `/data/downloads/incomplete`. This will be important later on for hardlinks.
+Navigate to `qbittorrent.domain.com` in your browser, you should be asked to login using the credentials for basic auth you set-up earlier. 
+
+**Getting the Initial Password:**
+qBittorrent generates a temporary password on first startup. To get this password:
+1. Run: `docker logs qbittorrent` (or `docker logs dmc-qbittorrent` depending on your container name)
+2. Look for a line that shows the temporary password
+3. Use these credentials to log in:
+   - Username: `admin`
+   - Password: `[password from logs]`
+
+After logging in, you can change the password by going to `Tools -> Options -> Web UI`.
+
+**Important Configuration Steps:**
+1. After logging in, go to `Tools -> Options -> Downloads`
+2. Set **Default Torrent Management Mode** to: `Automatic`
+3. Check the box for **Use Subcategories**
+4. Set your download paths:
+   - **Default Save Path**: `/data/downloads/complete`
+   - **Temp folder**: `/data/downloads/incomplete`
+
+These settings are crucial for proper integration with Radarr and Sonarr, and for hardlinks to work correctly.
 
 ## Radarr
 Inside of `dmc/compose` run
@@ -114,15 +134,15 @@ docker-compose up -d radarr
 <b>Configuration</b><br />
 Navigate to `radarr.domain.com` in your browser, in the panel under `Media Management` section and add the root folder by simply selecting `/data/media/movies` directory.
 
-Under `Download Clients` add a new client by selecting Transmission. Change these settings:
+Under `Download Clients` add a new client by selecting qBittorrent. Change these settings:
 
 | Setting | Value |
 |---|---|
-| Name | Transmission |
-| Host | transmission |
+| Name | qBittorrent |
+| Host | qbittorrent |
 | Category | movies |
 
-Host `transmission` will resolve the local IP of the container, do not use a domain or public IP. It's more convenient and secure to connect services locally. Since the connection is local, you do not need to insert any other credentials. Click `Test` to make sure it works and add the client.
+Host `qbittorrent` will resolve the local IP of the container, do not use a domain or public IP. It's more convenient and secure to connect services locally. Since the connection is local, you do not need to insert any other credentials. Click `Test` to make sure it works and add the client.
 
 ## Sonarr
 Inside of `dmc/compose` run
@@ -133,15 +153,15 @@ docker-compose up -d sonarr
  <b>Configuration</b><br />
 Navigate to `sonarr.domain.com` in your browser, in the panel under `Media Management` section and add the root folder by simply selecting `/data/media/tvshows` directory.
 
-Under `Download Clients` add new client by selecting Transmission. Change these settings:
+Under `Download Clients` add new client by selecting qBittorrent. Change these settings:
 
 | Setting | Value |
 |---|---|
-| Name | Transmission |
-| Host | transmission |
+| Name | qBittorrent |
+| Host | qbittorrent |
 | Category | tvshows |
 
-Host `transmission` will resolve the local IP of the container, do not use a domain or public IP. It's more convenient and secure to connect services locally. Since the connection is local, you do not need to insert any other credentials. Click `Test` to make sure it works and add the client.
+Host `qbittorrent` will resolve the local IP of the container, do not use a domain or public IP. It's more convenient and secure to connect services locally. Since the connection is local, you do not need to insert any other credentials. Click `Test` to make sure it works and add the client.
 
 ## Prowlarr
 Inside of `dmc/compose` run
@@ -188,5 +208,5 @@ Below are the important settings you should edit, the instructions for sonarr ar
 # 📋 TODO
 - Add an option for rclone for ability to mount gdrive, etc.
 - Add Plex as an option
-- Add VPN option for Transmission torrent client
+- Add VPN option for qBittorrent torrent client
 - Explore the hype surrounding https://real-debrid.com
